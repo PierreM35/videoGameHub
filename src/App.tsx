@@ -1,21 +1,20 @@
 import './App.css'
-import { Box, Button, Grid } from "@mui/material";
+import { Grid, Typography} from "@mui/material";
 import NavBar from "./components/NavBar.tsx";
 
 function App() {
-
   return (
-      <Box sx={{ flexGrow: 1 }}>
-          <NavBar/>
-          <Grid container spacing={2}>
-              <Grid size={6}>
-                  <Button>item 1</Button>
-              </Grid>
-              <Grid size={6}>
-                  <Button>item 2</Button>
-              </Grid>
+      <Grid container spacing={2}>
+          <Grid size={12}>
+              <NavBar/>
           </Grid>
-      </Box>
+          <Grid size={6}>
+              <Typography>item 1</Typography>
+          </Grid>
+          <Grid size={6}>
+              <Typography>item 2</Typography>
+          </Grid>
+      </Grid>
   )
 }
 
