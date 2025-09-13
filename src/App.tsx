@@ -15,14 +15,14 @@ function App() {
         setToggleDarkMode(!toggleDarkMode);
     };
 
-    const darkTheme = createTheme({
+    const myTheme = createTheme({
       palette: {
         mode: toggleDarkMode ? 'dark' : 'light',
       },
     });
 
     return (
-        <ThemeProvider theme={darkTheme}>
+        <ThemeProvider theme={myTheme}>
             <CssBaseline />
             <Grid container spacing={2}>
                 <Grid size={12}>

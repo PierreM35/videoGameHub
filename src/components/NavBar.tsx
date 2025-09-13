@@ -13,7 +13,7 @@ function NavBar({onModeSwitch}: Props) {
             direction={"row"}
             spacing={2}
             height={60}
-            sx={{ p: 1, mt: 0 }}
+            sx={{ p: 1, mt: 0, justifyContent: "space-between" }}
         >
             <img src={logo} />
             <ColorModeSwitch onModeSwitch={onModeSwitch}/>

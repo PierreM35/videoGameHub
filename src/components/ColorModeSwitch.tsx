@@ -13,7 +13,7 @@ function ColorModeSwitch({onModeSwitch}: Props) {
                 onChange={onModeSwitch}
             />
             <Typography alignContent={"center"}>
-                Dark mode
+                Dark Mode
             </Typography>
         </Stack>
     )
