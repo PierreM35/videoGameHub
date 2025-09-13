@@ -1,7 +1,9 @@
-import { Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import logo from '../assets/logo.webp';
+import ColorModeSwitch from "./ColorModeSwitch.tsx";
 
 function NavBar() {
+
     return (
         <Stack
             direction={"row"}
@@ -10,7 +12,7 @@ function NavBar() {
             sx={{ p: 1, mt: 0 }}
         >
             <img src={logo} />
-            <Typography alignContent={"center"}>NavBar</Typography>
+            <ColorModeSwitch/>
         </Stack>
     )
 }
