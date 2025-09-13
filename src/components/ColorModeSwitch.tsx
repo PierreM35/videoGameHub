@@ -1,15 +1,16 @@
-import {Stack, Switch, Typography, useColorScheme} from "@mui/material";
+import { Stack, Switch, Typography} from "@mui/material";
 
-function ColorModeSwitch() {
-    // const { mode, setMode } = useColorScheme();
+interface Props {
+    onModeSwitch: () => void;
+}
+
+function ColorModeSwitch({onModeSwitch}: Props) {
 
     return (
         <Stack direction={"row"}>
             <Switch
                 defaultChecked={true}
-                // checked={mode === 'dark'}
-                // onChange={() => setMode(mode === 'dark' ? 'light' : 'dark')}
-                // onChange={() => setMode('light')}
+                onChange={onModeSwitch}
             />
             <Typography alignContent={"center"}>
                 Dark mode
