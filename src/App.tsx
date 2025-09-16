@@ -7,6 +7,7 @@ import {
 import NavBar from "./components/NavBar.tsx";
 import {useState} from "react"
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import GameGrid from './components/GameGrid.tsx';
 
 function App() {
     const [toggleDarkMode, setToggleDarkMode] = useState(true);
@@ -32,7 +33,7 @@ function App() {
                     <Typography>item 1</Typography>
                 </Grid>
                 <Grid size={6}>
-                    <Typography>item 2</Typography>
+                    <GameGrid />
                 </Grid>
             </Grid>
         </ThemeProvider>
