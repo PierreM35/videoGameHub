@@ -29,10 +29,10 @@ function App() {
                 <Grid size={12}>
                     <NavBar onModeSwitch={toggleDarkTheme}/>
                 </Grid>
-                <Grid size={6}>
+                <Grid size={2}>
                     <Typography>item 1</Typography>
                 </Grid>
-                <Grid size={6}>
+                <Grid size={10}>
                     <GameGrid />
                 </Grid>
             </Grid>
