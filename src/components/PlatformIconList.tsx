@@ -12,7 +12,6 @@ import { SiNintendo } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
 import type { IconType } from "react-icons";
 import { Stack } from "@mui/material";
-import { grey } from '@mui/material/colors';
 
 interface Props {
     platforms: Platform[];
@@ -32,7 +31,7 @@ const PlatformIconList = ({ platforms }: Props) => {
     };
 
     return (
-        <Stack direction="row" spacing={1}>
+        <Stack direction="row" spacing={'5px'} marginTop={'5px'} >
             {platforms.map((platform) => {
                 const Icon = iconMap[platform.slug];
                 return (<Icon color="#9e9e9e"/>);
