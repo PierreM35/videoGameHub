@@ -10,7 +10,7 @@ interface Props {
 
 function GameCard({ game }: Props) {
     return (
-        <Card sx={{ maxWidth: 250 }} style={{ backgroundColor: '#263238' }}>
+        <Card style={{ backgroundColor: '#263238' }}>
             <CardActionArea>
                 <CardMedia
                     sx={{ height: 140, width: 250 }}

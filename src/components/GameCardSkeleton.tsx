@@ -5,7 +5,6 @@ const GameCardSkeleton = () => {
         <Card >
             <Skeleton 
                 variant="rectangular" 
-                width={250} 
                 height={140}
             />
                 <CardContent >
