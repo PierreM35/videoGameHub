@@ -1,10 +1,11 @@
-import { List, ListItem, Stack, Typography } from "@mui/material";
-import useGames, { type Game } from "../hooks/useGames";
+import { Stack } from "@mui/material";
+import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
+import GameCardSkeleton from "./GameCardSkeleton";
 
 function GameGrid() {
-    const { games, error } = useGames();
-    let myGame=games.slice(0,4);
+    const { games, error, isLoading } = useGames();
+    const skeletons = [1, 2, 3, 4, 5, 6];
 
     return (
         <>
@@ -14,9 +15,12 @@ function GameGrid() {
                 spacing={2} 
                 useFlexGap
                 sx={{ flexWrap: 'wrap' }}>
-                {games.map(game => (
-                    <GameCard key={game.id} game={game} />
-                ))}
+                    {isLoading && skeletons.map(skeleton => (
+                        <GameCardSkeleton key={skeleton} />
+                    ))}
+                    {games.map(game => (
+                        <GameCard key={game.id} game={game} />
+                    ))}
             </Stack>
         </>
     );

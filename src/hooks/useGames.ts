@@ -24,23 +24,27 @@ interface FectchGamesResponse {
 const useGames = () => {
     const [games, setGames] = React.useState<Game[]>([]);
     const [error, setError] = React.useState('');
+    const [isLoading, setLoading] = React.useState(false);
 
     useEffect(() => {
         const controller = new AbortController();
 
+        setLoading(true);
         apiClient.get<FectchGamesResponse>('/games')
             .then(response => {
                 setGames(response.data.results);
+                setLoading(false);
             })
             .catch(error => {
                 if (error instanceof CanceledError) return;
                 setError('Failed to fetch games');
+                setLoading(false);
             });
 
         return () => controller.abort();
     }, []);
 
-    return { games, error };
+    return { games, error, isLoading };
 }
 
 export default useGames;
