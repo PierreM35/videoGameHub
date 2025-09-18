@@ -1,7 +1,8 @@
-import { Badge, Card, CardActionArea, CardActions, CardContent, CardMedia, Stack, Typography } from "@mui/material";
+import { Card, CardActionArea, CardContent, CardMedia, Stack, Typography } from "@mui/material";
 import type { Game } from "../hooks/useGames";
 import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
+import getCroppedImageUrl from "../services/image-url";
 
 interface Props {
     game: Game;
@@ -13,7 +14,7 @@ function GameCard({ game }: Props) {
             <CardActionArea>
                 <CardMedia
                     sx={{ height: 140, width: 250 }}
-                    image={game.background_image}
+                    image={getCroppedImageUrl(game.background_image)}
                 />
                 <CardContent >
                     <Stack>

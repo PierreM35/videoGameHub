@@ -1,5 +1,4 @@
-import { Box, Container, Typography } from "@mui/material";
-import { createColorScheme } from "@mui/material/styles";
+import { Box, Typography } from "@mui/material";
 
 interface Props {
     score: number;
