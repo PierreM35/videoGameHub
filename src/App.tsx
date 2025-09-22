@@ -1,11 +1,12 @@
 import './App.css'
-import { Box, CssBaseline } from "@mui/material";
+import { Box, CssBaseline, Stack } from "@mui/material";
 import NavBar from "./components/NavBar.tsx";
 import {useState} from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import GameGrid from './components/GameGrid.tsx';
 import GenreList from './components/GenreList.tsx';
 import type { Genre } from './hooks/useGenres.ts';
+import PlatformsDropdown from './components/PlatformsDropdown.tsx';
 
 function App() {
     const [toggleDarkMode, setToggleDarkMode] = useState(true);
@@ -40,7 +41,10 @@ function App() {
                     <GenreList onSelectGenre={(genre) => setSelectedGenre(genre) } selectedGenre={selectedGenre} />
                 </Box>
                 <Box sx={{ gridArea:'main' }} >
-                    <GameGrid selectedGenre={selectedGenre} />
+                    <Stack>
+                        <PlatformsDropdown />
+                        <GameGrid selectedGenre={selectedGenre} />
+                    </Stack>
                 </Box>
             </Box>
         </ThemeProvider>
