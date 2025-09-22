@@ -37,7 +37,7 @@ function App() {
                     <NavBar onModeSwitch={toggleDarkTheme}/>
                 </Box>
                 <Box sx={{ gridArea:'aside' }}  >
-                    <GenreList onSelectGenre={(genre) => setSelectedGenre(genre) } />
+                    <GenreList onSelectGenre={(genre) => setSelectedGenre(genre) } selectedGenre={selectedGenre} />
                 </Box>
                 <Box sx={{ gridArea:'main' }} >
                     <GameGrid selectedGenre={selectedGenre} />
