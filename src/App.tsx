@@ -1,11 +1,7 @@
 import './App.css'
-import {
-    CssBaseline,
-    Grid,
-    Typography,
-} from "@mui/material";
+import { Box, CssBaseline, Grid } from "@mui/material";
 import NavBar from "./components/NavBar.tsx";
-import {useState} from "react"
+import {useState} from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import GameGrid from './components/GameGrid.tsx';
 import GenreList from './components/GenreList.tsx';
@@ -20,23 +16,31 @@ function App() {
     const myTheme = createTheme({
       palette: {
         mode: toggleDarkMode ? 'dark' : 'light',
-      },
+      }
     });
 
     return (
         <ThemeProvider theme={myTheme}>
             <CssBaseline />
-            <Grid container spacing={2}>
-                <Grid size={12}>
+            <Box 
+                sx={{ 
+                    display: 'grid',
+                    gap: 2,
+                    gridTemplateRows: 'auto',
+                    gridTemplateColumns: 'repeat(5, 1fr)',
+                    gridTemplateAreas: `"nav nav nav nav nav" "aside main main main main"`,
+                }}
+            >
+                <Box sx={{ gridArea:'nav' }}  >
                     <NavBar onModeSwitch={toggleDarkTheme}/>
-                </Grid>
-                <Grid size={2}>
+                </Box>
+                <Box sx={{ gridArea:'aside' }}  >
                     <GenreList />
-                </Grid>
-                <Grid size={10}>
+                </Box>
+                <Box sx={{ gridArea:'main' }} >
                     <GameGrid />
-                </Grid>
-            </Grid>
+                </Box>
+            </Box>
         </ThemeProvider>
     )
 }

@@ -1,21 +1,34 @@
-import { Stack, Typography } from "@mui/material";
+import { CircularProgress, Stack, Typography } from "@mui/material";
 import useGenres from "../hooks/useGenres";
+import getCroppedImageUrl from "../services/image-url";
 
 const GenreList = () => {
-    const { data, error, isLoading } = useGenres();
+    const { data, isLoading, error } = useGenres();
+
+    if (error)
+        return null;
+    
+    if (isLoading) 
+        return <CircularProgress />;
 
     return (
-        <>
-            {error && <p>{error}</p>}
-            <Stack spacing={2} >  
-                {isLoading && <p>Loading...</p>}
-                {data.map(genre => (
-                    <Typography>
+        <Stack spacing={2} >  
+            {isLoading && <p>Loading...</p>}
+            {data.map(genre => (
+                <Stack direction="row" spacing={2} key={genre.id} >
+                    <img
+                        src={getCroppedImageUrl(genre.image_background)}
+                        loading="lazy"
+                        width='32px'
+                        height={32}
+                        style={{borderRadius: 5}}
+                    />
+                    <Typography fontSize={16}>
                         {genre.name}
                     </Typography>
-                ))}
-            </Stack>
-        </>
+                </Stack>
+            ))}
+        </Stack>
     );
 }
 

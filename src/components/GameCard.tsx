@@ -13,7 +13,7 @@ function GameCard({ game }: Props) {
         <Card style={{ backgroundColor: '#263238' }}>
             <CardActionArea>
                 <CardMedia
-                    sx={{ height: 140, width: 250 }}
+                    sx={{ height: 140}}
                     image={getCroppedImageUrl(game.background_image)}
                 />
                 <CardContent >
