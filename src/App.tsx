@@ -13,6 +13,7 @@ import SortSelector from './components/SortSelector.tsx';
 export interface GameQuery {
     genre: Genre | null;
     platform: Platform | null;
+    sortOrder: string;
 }
 
 function App() {
@@ -51,7 +52,7 @@ function App() {
                     <Stack>
                         <Stack direction='row' gap={2} >
                             <PlatformsDropdown onSelectPlatform={( platform ) => setGameQuery({...gameQuery, platform}) }/>
-                            <SortSelector />
+                            <SortSelector sortOrder={gameQuery.sortOrder} onSelectSortOrder={(sortOrder) => setGameQuery({...gameQuery, sortOrder})} />
                         </Stack>
                         <GameGrid gameQuery={gameQuery} />
                     </Stack>
