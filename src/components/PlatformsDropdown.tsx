@@ -1,4 +1,4 @@
-import { Autocomplete, TextField } from "@mui/material";
+import { MenuItem, Select } from "@mui/material";
 import usePlatforms, { type Platform } from "../hooks/usePlatforms";
 
 interface Props {
@@ -9,21 +9,13 @@ const PlatformsDropdown = ({ onSelectPlatform }: Props) => {
 
     const { data, error } = usePlatforms();
 
-    const defaultProps = {
-        options: data.map(platform => platform.name),
-    };
-
     if (error) 
         return null;
     
     return (
-        <Autocomplete
+        <Select
             sx={{ width: 300, marginBottom: 2 }}
-            {...defaultProps}
-            disablePortal
-            renderInput={(params) => (
-                <TextField {...params} label="Platforms" />
-            )}
+            label="Platform"
             onChange={(_event, value) => {
                 const selectedPlatform = data.find(platform => platform.name === value);
                 if (selectedPlatform) 
@@ -31,7 +23,13 @@ const PlatformsDropdown = ({ onSelectPlatform }: Props) => {
                 else
                     onSelectPlatform(null);
             }}
-        />
+        >
+            {data.map(platform => (
+                <MenuItem  key={platform.id} value={platform.name}>
+                    {platform.name}
+                </MenuItem >
+            ))}
+        </Select>
     )
 }
 

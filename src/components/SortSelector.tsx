@@ -1,4 +1,4 @@
-import { Autocomplete, TextField } from "@mui/material";
+import { MenuItem, Select } from "@mui/material";
 
 interface Props {
     onSelectSortOrder: (sortOrder: string) => void;
@@ -16,27 +16,23 @@ const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
         { value: "-rating", label: "Average rating" },
     ]
 
-    const defaultProps = {
-        options: sortOrders.map((option) => option.label),
-    };
-    
-    const selectedSortOrder = sortOrders.find((order) => order.value === sortOrder);
-
     return (
-        <Autocomplete
+        <Select
             sx={{ width: 300, marginBottom: 2 }}
-            {...defaultProps}
-            disablePortal
-            renderInput={(params) => (
-                <TextField {...params} label={'Sorted by: ' + selectedSortOrder?.label} />
-            )}
+            label="Sort By"
             onChange={(_event, value) => {
                 const selectedSortOrder = sortOrders.find(
                     (order) => order.label === value
                 )?.value;
                 onSelectSortOrder(selectedSortOrder || "");
             }}
-        />
+        >
+            {sortOrders.map((order) => (
+                <MenuItem key={order.value} value={order.label}>
+                    {order.label}
+                </MenuItem>
+            ))}
+        </Select>
     )
 }
 
