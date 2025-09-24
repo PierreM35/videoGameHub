@@ -1,4 +1,3 @@
-import type { Platform } from "../hooks/useGames";
 import { 
     FaWindows, 
     FaPlaystation,
@@ -12,6 +11,7 @@ import { SiNintendo } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
 import type { IconType } from "react-icons";
 import { Stack } from "@mui/material";
+import type { Platform } from "../hooks/usePlatforms";
 
 interface Props {
     platforms: Platform[];

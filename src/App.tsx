@@ -9,10 +9,14 @@ import type { Genre } from './hooks/useGenres.ts';
 import PlatformsDropdown from './components/PlatformsDropdown.tsx';
 import type { Platform } from './hooks/usePlatforms.ts';
 
+export interface GameQuery {
+    genre: Genre | null;
+    platform: Platform | null;
+}
+
 function App() {
     const [toggleDarkMode, setToggleDarkMode] = useState(true);
-    const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-    const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null);
+    const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
     const toggleDarkTheme = () => {
         setToggleDarkMode(!toggleDarkMode);
@@ -40,12 +44,12 @@ function App() {
                     <NavBar onModeSwitch={toggleDarkTheme}/>
                 </Box>
                 <Box sx={{ gridArea:'aside' }}  >
-                    <GenreList onSelectGenre={(genre) => setSelectedGenre(genre) } selectedGenre={selectedGenre} />
-                </Box>
+                    <GenreList onSelectGenre={(genre) => setGameQuery({...gameQuery, genre}) } selectedGenre={gameQuery.genre} />
+                </Box>setGameQuery
                 <Box sx={{ gridArea:'main' }} >
                     <Stack>
-                        <PlatformsDropdown onSelectPlatform={( platform ) => setSelectedPlatform(platform) }/>
-                        <GameGrid selectedGenre={selectedGenre} selectedPlatform={selectedPlatform} />
+                        <PlatformsDropdown onSelectPlatform={( platform ) => setGameQuery({...gameQuery, platform}) }/>
+                        <GameGrid gameQuery={gameQuery} />
                     </Stack>
                 </Box>
             </Box>
