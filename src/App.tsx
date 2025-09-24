@@ -7,10 +7,12 @@ import GameGrid from './components/GameGrid.tsx';
 import GenreList from './components/GenreList.tsx';
 import type { Genre } from './hooks/useGenres.ts';
 import PlatformsDropdown from './components/PlatformsDropdown.tsx';
+import type { Platform } from './hooks/usePlatforms.ts';
 
 function App() {
     const [toggleDarkMode, setToggleDarkMode] = useState(true);
     const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+    const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null);
 
     const toggleDarkTheme = () => {
         setToggleDarkMode(!toggleDarkMode);
@@ -42,8 +44,8 @@ function App() {
                 </Box>
                 <Box sx={{ gridArea:'main' }} >
                     <Stack>
-                        <PlatformsDropdown />
-                        <GameGrid selectedGenre={selectedGenre} />
+                        <PlatformsDropdown onSelectPlatform={( platform ) => setSelectedPlatform(platform) }/>
+                        <GameGrid selectedGenre={selectedGenre} selectedPlatform={selectedPlatform} />
                     </Stack>
                 </Box>
             </Box>
