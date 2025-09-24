@@ -1,6 +1,7 @@
 import { Stack } from "@mui/material";
 import logo from '../assets/logo.webp';
 import ColorModeSwitch from "./ColorModeSwitch.tsx";
+import SearchInput from "./SearchInput.tsx";
 
 interface Props {
     onModeSwitch: () => void;
@@ -16,6 +17,7 @@ function NavBar({onModeSwitch}: Props) {
             sx={{ p: 1, mt: 0, justifyContent: "space-between" }}
         >
             <img src={logo} />
+            <SearchInput />
             <ColorModeSwitch onModeSwitch={onModeSwitch}/>
         </Stack>
     )

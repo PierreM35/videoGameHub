@@ -12,7 +12,7 @@ function ColorModeSwitch({onModeSwitch}: Props) {
                 defaultChecked={true}
                 onChange={onModeSwitch}
             />
-            <Typography alignContent={"center"}>
+            <Typography alignContent={"center"} noWrap>
                 Dark Mode
             </Typography>
         </Stack>
