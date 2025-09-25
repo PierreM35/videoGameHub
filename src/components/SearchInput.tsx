@@ -1,8 +1,23 @@
-import { InputAdornment, TextField } from "@mui/material";
+import { InputAdornment, TextField, type TextFieldProps } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import { useRef } from "react";
 
-const SearchInputs = () => {
-    return <TextField 
+interface Props {
+    onSearch: (searchString: string) => void;
+}
+
+const SearchInputs = ({ onSearch }: Props) => {
+  
+    const searchRef = useRef<TextFieldProps>(null);
+  
+    return (
+        <form onSubmit={e => {
+            e.preventDefault();
+            if (searchRef.current)
+                onSearch(searchRef.current.value as string);
+            }}>
+            <TextField 
+                inputRef={searchRef}
                 fullWidth={true}
                 label="Search games..." 
                 InputProps={{
@@ -12,6 +27,8 @@ const SearchInputs = () => {
                         </InputAdornment>
                         )
                     }}/>;
+        </form>
+    )
 }
 
 export default SearchInputs;

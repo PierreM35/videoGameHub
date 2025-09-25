@@ -16,8 +16,8 @@ const PlatformsDropdown = ({ onSelectPlatform }: Props) => {
         <Select
             sx={{ width: 300, marginBottom: 2 }}
             label="Platform"
-            onChange={(_event, value) => {
-                const selectedPlatform = data.find(platform => platform.name === value);
+            onChange={(event) => {
+                const selectedPlatform = data.find(platform => platform.name === event.target.value);
                 if (selectedPlatform) 
                     onSelectPlatform(selectedPlatform);
                 else

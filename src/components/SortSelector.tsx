@@ -20,11 +20,12 @@ const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
         <Select
             sx={{ width: 300, marginBottom: 2 }}
             label="Sort By"
-            onChange={(_event, value) => {
+            onChange={(event) => {
                 const selectedSortOrder = sortOrders.find(
-                    (order) => order.label === value
-                )?.value;
-                onSelectSortOrder(selectedSortOrder || "");
+                    (order) => order.label === event.target.value
+                );
+                console.log(selectedSortOrder === undefined ? '' : selectedSortOrder?.value);
+                onSelectSortOrder(selectedSortOrder === undefined ? '' : selectedSortOrder?.value);
             }}
         >
             {sortOrders.map((order) => (

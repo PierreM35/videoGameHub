@@ -14,6 +14,7 @@ export interface GameQuery {
     genre: Genre | null;
     platform: Platform | null;
     sortOrder: string;
+    searchedText: string;
 }
 
 function App() {
@@ -43,16 +44,22 @@ function App() {
                 }}
             >
                 <Box sx={{ gridArea:'nav' }}  >
-                    <NavBar onModeSwitch={toggleDarkTheme}/>
+                    <NavBar
+                        onModeSwitch={toggleDarkTheme} 
+                        onSearch={(searchedText) => setGameQuery({...gameQuery, searchedText})}/>
                 </Box>
                 <Box sx={{ gridArea:'aside' }}  >
-                    <GenreList onSelectGenre={(genre) => setGameQuery({...gameQuery, genre}) } selectedGenre={gameQuery.genre} />
+                    <GenreList 
+                        onSelectGenre={(genre) => setGameQuery({...gameQuery, genre}) } 
+                        selectedGenre={gameQuery.genre} />
                 </Box>setGameQuery
                 <Box sx={{ gridArea:'main' }} >
                     <Stack>
                         <Stack direction='row' gap={2} >
                             <PlatformsDropdown onSelectPlatform={( platform ) => setGameQuery({...gameQuery, platform}) }/>
-                            <SortSelector sortOrder={gameQuery.sortOrder} onSelectSortOrder={(sortOrder) => setGameQuery({...gameQuery, sortOrder})} />
+                            <SortSelector 
+                                sortOrder={gameQuery.sortOrder} 
+                                onSelectSortOrder={(sortOrder) => setGameQuery({...gameQuery, sortOrder})} />
                         </Stack>
                         <GameGrid gameQuery={gameQuery} />
                     </Stack>
