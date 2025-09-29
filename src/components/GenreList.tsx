@@ -1,4 +1,4 @@
-import { Button, CircularProgress, Link, Stack, Typography } from "@mui/material";
+import { CircularProgress, Link, Stack, Typography } from "@mui/material";
 import useGenres, { type Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 
