@@ -9,6 +9,7 @@ import type { Genre } from './hooks/useGenres.ts';
 import PlatformsDropdown from './components/PlatformsDropdown.tsx';
 import type { Platform } from './hooks/usePlatforms.ts';
 import SortSelector from './components/SortSelector.tsx';
+import GameHeading from './components/GameHeading.tsx';
 
 export interface GameQuery {
     genre: Genre | null;
@@ -55,6 +56,7 @@ function App() {
                 </Box>setGameQuery
                 <Box sx={{ gridArea:'main' }} >
                     <Stack>
+                        <GameHeading gameQuery={gameQuery} />
                         <Stack direction='row' gap={2} >
                             <PlatformsDropdown onSelectPlatform={( platform ) => setGameQuery({...gameQuery, platform}) }/>
                             <SortSelector 
