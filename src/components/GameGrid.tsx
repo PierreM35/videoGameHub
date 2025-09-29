@@ -18,7 +18,7 @@ function GameGrid({ gameQuery }: Props) {
             {error && <p>{error}</p>}
             <Stack 
                 direction="row" 
-                spacing={2} 
+                spacing={3} 
                 useFlexGap
                 sx={{ flexWrap: 'wrap' }}>
                     {isLoading && skeletons.map(skeleton => (

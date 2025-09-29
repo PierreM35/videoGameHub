@@ -18,13 +18,16 @@ function GameCard({ game }: Props) {
                 />
                 <CardContent >
                     <Stack>
-                        <Typography variant="h6" fontWeight={"bold"} align="left">
-                            {game.name}
-                        </Typography>
-                        <Stack direction="row" justifyContent="space-between">
+                        <Stack 
+                            direction="row" 
+                            sx={{mb: 1}}
+                            justifyContent="space-between">
                             <PlatformIconList platforms={game.parent_platforms.map(p => p.platform)} />
                             <CriticScore score={game.metacritic} />
                         </Stack>
+                        <Typography variant="h6" fontWeight={"bold"} align="left">
+                            {game.name}
+                        </Typography>
                     </Stack>
                 </CardContent>
             </CardActionArea>
