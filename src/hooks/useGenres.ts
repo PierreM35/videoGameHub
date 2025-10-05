@@ -1,3 +1,6 @@
+import { useQuery } from "@tanstack/react-query";
+import apiClient from "../services/api-client";
+import type { FectchResponse } from "./useData";
 import genres from "../data/genres";
 
 export interface Genre {
@@ -6,6 +9,14 @@ export interface Genre {
     image_background: string;
 }
 
-const useGenres = () => ({ data: genres, isLoading: false, error: null });
+const useGenres = () => useQuery<FectchResponse<Genre>, Error>({
+    queryKey: ["genres"],
+    queryFn: () => 
+        apiClient
+            .get<FectchResponse<Genre>>('/genres')
+            .then(res => res.data),
+    staleTime: 24 * 60 * 60 * 1000, // 24 hours
+    initialData: { results: genres, count: genres.length }
+});
 
 export default useGenres;

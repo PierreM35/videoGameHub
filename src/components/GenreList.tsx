@@ -28,7 +28,7 @@ const GenreList = ({ onSelectGenre, selectedGenre}: Props) => {
             </Typography>
             <Stack spacing={2} >  
                 {isLoading && <p>Loading...</p>}
-                {data.map(genre => (
+                {data?.results.map(genre => (
                     <Stack direction="row" spacing={2} key={genre.id} >
                         <img
                             src={getCroppedImageUrl(genre.image_background)}
