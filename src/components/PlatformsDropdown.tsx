@@ -17,14 +17,14 @@ const PlatformsDropdown = ({ onSelectPlatform }: Props) => {
             sx={{ width: 300, marginBottom: 2 }}
             label="Platform"
             onChange={(event) => {
-                const selectedPlatform = data.find(platform => platform.name === event.target.value);
+                const selectedPlatform = data?.results.find(platform => platform.name === event.target.value);
                 if (selectedPlatform) 
                     onSelectPlatform(selectedPlatform);
                 else
                     onSelectPlatform(null);
             }}
         >
-            {data.map(platform => (
+            {data?.results.map(platform => (
                 <MenuItem  key={platform.id} value={platform.name}>
                     {platform.name}
                 </MenuItem >
