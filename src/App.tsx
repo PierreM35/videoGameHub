@@ -5,15 +5,13 @@ import {useState} from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import GameGrid from './components/GameGrid.tsx';
 import GenreList from './components/GenreList.tsx';
-import type { Genre } from './hooks/useGenres.ts';
 import PlatformsDropdown from './components/PlatformsDropdown.tsx';
-import type { Platform } from './hooks/usePlatforms.ts';
 import SortSelector from './components/SortSelector.tsx';
 import GameHeading from './components/GameHeading.tsx';
 
 export interface GameQuery {
-    genre: Genre | null;
-    platform: Platform | null;
+    genreId?: Number;
+    platformId?: Number;
     sortOrder: string;
     searchedText: string;
 }
@@ -51,14 +49,15 @@ function App() {
                 </Box>
                 <Box sx={{ gridArea:'aside' }}  >
                     <GenreList 
-                        onSelectGenre={(genre) => setGameQuery({...gameQuery, genre}) } 
-                        selectedGenre={gameQuery.genre} />
+                        onSelectGenre={(genre) => setGameQuery({...gameQuery, genreId: genre.id}) } 
+                        selectedGenreId={gameQuery.genreId} />
                 </Box>setGameQuery
                 <Box sx={{ gridArea:'main' }} >
                     <Stack>
                         <GameHeading gameQuery={gameQuery} />
                         <Stack direction='row' gap={2} >
-                            <PlatformsDropdown onSelectPlatform={( platform ) => setGameQuery({...gameQuery, platform}) }/>
+                            <PlatformsDropdown 
+                                onSelectPlatform={( platform ) => setGameQuery({...gameQuery, platformId: platform?.id}) }/>
                             <SortSelector 
                                 sortOrder={gameQuery.sortOrder} 
                                 onSelectSortOrder={(sortOrder) => setGameQuery({...gameQuery, sortOrder})} />

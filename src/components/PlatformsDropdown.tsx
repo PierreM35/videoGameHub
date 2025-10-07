@@ -3,9 +3,10 @@ import usePlatforms, { type Platform } from "../hooks/usePlatforms";
 
 interface Props {
     onSelectPlatform: (platform: Platform | null) => void;
+    selectedPlatformId?: Number;
 }
 
-const PlatformsDropdown = ({ onSelectPlatform }: Props) => {
+const PlatformsDropdown = ({ onSelectPlatform, selectedPlatformId }: Props) => {
 
     const { data, error } = usePlatforms();
 
