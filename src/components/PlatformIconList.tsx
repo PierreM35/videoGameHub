@@ -33,6 +33,8 @@ const PlatformIconList = ({ platforms }: Props) => {
     return (
         <Stack direction="row" spacing={'5px'} marginTop={'5px'} >
             {platforms.map((platform) => {
+                if (!iconMap[platform.slug]) 
+                    return null;
                 const Icon = iconMap[platform.slug];
                 return (<Icon key={platform.id} color="#9e9e9e"/>);
             })}
