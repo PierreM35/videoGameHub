@@ -1,5 +1,6 @@
 import { MenuItem, Select } from "@mui/material";
 import usePlatforms, { type Platform } from "../hooks/usePlatforms";
+import usePlatform from "../hooks/usePlatform";
 
 interface Props {
     onSelectPlatform: (platform: Platform | null) => void;
@@ -9,6 +10,7 @@ interface Props {
 const PlatformsDropdown = ({ onSelectPlatform, selectedPlatformId }: Props) => {
 
     const { data, error } = usePlatforms();
+    const selectedPlatform = usePlatform(selectedPlatformId);
 
     if (error) 
         return null;
@@ -17,16 +19,10 @@ const PlatformsDropdown = ({ onSelectPlatform, selectedPlatformId }: Props) => {
         <Select
             sx={{ width: 300, marginBottom: 2 }}
             label="Platform"
-            onChange={(event) => {
-                const selectedPlatform = data?.results.find(platform => platform.name === event.target.value);
-                if (selectedPlatform) 
-                    onSelectPlatform(selectedPlatform);
-                else
-                    onSelectPlatform(null);
-            }}
+            value={selectedPlatform?.name || 'Platforms'}
         >
             {data?.results.map(platform => (
-                <MenuItem  key={platform.id} value={platform.name}>
+                <MenuItem key={platform.id} value={platform.name} onClick={() => onSelectPlatform(platform)}>
                     {platform.name}
                 </MenuItem >
             ))}

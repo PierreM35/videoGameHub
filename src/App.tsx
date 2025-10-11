@@ -57,7 +57,8 @@ function App() {
                         <GameHeading gameQuery={gameQuery} />
                         <Stack direction='row' gap={2} >
                             <PlatformsDropdown 
-                                onSelectPlatform={( platform ) => setGameQuery({...gameQuery, platformId: platform?.id}) }/>
+                                onSelectPlatform={( platform ) => setGameQuery({...gameQuery, platformId: platform?.id}) }
+                                selectedPlatformId={gameQuery.platformId}/>
                             <SortSelector 
                                 sortOrder={gameQuery.sortOrder} 
                                 onSelectSortOrder={(sortOrder) => setGameQuery({...gameQuery, sortOrder})} />
