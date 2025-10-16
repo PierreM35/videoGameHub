@@ -18,8 +18,6 @@ export interface GameQuery {
 
 function App() {
     const [toggleDarkMode, setToggleDarkMode] = useState(true);
-    const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
-
     const toggleDarkTheme = () => {
         setToggleDarkMode(!toggleDarkMode);
     };
@@ -47,10 +45,8 @@ function App() {
                         onModeSwitch={toggleDarkTheme} />
                 </Box>
                 <Box sx={{ gridArea:'aside' }}  >
-                    <GenreList 
-                        onSelectGenre={(genre) => setGameQuery({...gameQuery, genreId: genre.id}) } 
-                        selectedGenreId={gameQuery.genreId} />
-                </Box>setGameQuery
+                    <GenreList />
+                </Box>
                 <Box sx={{ gridArea:'main' }} >
                     <Stack>
                         <GameHeading />

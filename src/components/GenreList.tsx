@@ -1,14 +1,12 @@
 import { CircularProgress, Link, Stack, Typography } from "@mui/material";
-import useGenres, { type Genre } from "../hooks/useGenres";
+import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
+import useGameQueryStore from "../stateManagement/store";
 
-interface Props {
-    onSelectGenre: (genre: Genre) => void;
-    selectedGenreId?: Number;
-}
-
-const GenreList = ({ onSelectGenre, selectedGenreId}: Props) => {
+const GenreList = () => {
     const { data, isLoading, error } = useGenres();
+    const selectedGenreId = useGameQueryStore(s => s.gameQuery.genreId);
+    const setSelectedGenreId = useGameQueryStore(s => s.setGenreId);
 
     if (error)
         return null;
@@ -41,7 +39,7 @@ const GenreList = ({ onSelectGenre, selectedGenreId}: Props) => {
                         <Link 
                             fontWeight={genre.id === selectedGenreId ? 'bold' : 'normal'}
                             sx={{cursor: 'pointer'}}
-                            onClick={() => onSelectGenre(genre) }>
+                            onClick={() => setSelectedGenreId(genre.id) }>
                             {genre.name}
                         </Link>
                     </Stack>
