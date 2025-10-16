@@ -1,26 +1,22 @@
-import { Button, CircularProgress, Stack } from "@mui/material";
+import { CircularProgress, Stack } from "@mui/material";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
-import type { GameQuery } from "../App";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-interface Props {
-    gameQuery: GameQuery;
-}
-
-function GameGrid({ gameQuery }: Props) {
+function GameGrid() {
     const { 
         data, 
         error,
         isLoading, 
         fetchNextPage,
         hasNextPage, 
-    } = useGames(gameQuery);
+    } = useGames();
     const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
+   
     if (error) return <p>{error?.message}</p>;
 
     const fetchedGamesCount = data?.pages.reduce((total, page) => total + page.results.length, 0) || 0;

@@ -58,11 +58,9 @@ function App() {
                             <PlatformsDropdown 
                                 onSelectPlatform={( platform ) => setGameQuery({...gameQuery, platformId: platform?.id}) }
                                 selectedPlatformId={gameQuery.platformId}/>
-                            <SortSelector 
-                                sortOrder={gameQuery.sortOrder} 
-                                onSelectSortOrder={(sortOrder) => setGameQuery({...gameQuery, sortOrder})} />
+                            <SortSelector />
                         </Stack>
-                        <GameGrid gameQuery={gameQuery} />
+                        <GameGrid />
                     </Stack>
                 </Box>
             </Box>

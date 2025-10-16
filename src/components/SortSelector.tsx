@@ -1,11 +1,8 @@
 import { MenuItem, Select } from "@mui/material";
+import useGameQueryStore from "../stateManagement/store";
 
-interface Props {
-    onSelectSortOrder: (sortOrder: string) => void;
-    sortOrder: string;
-}
 
-const SortSelector = ({ onSelectSortOrder }: Props) => {
+const SortSelector = () => {
 
     const sortOrders = [
         { value: "", label: "Relevance" },
@@ -15,6 +12,8 @@ const SortSelector = ({ onSelectSortOrder }: Props) => {
         { value: "-metacritic", label: "Popularity" },
         { value: "-rating", label: "Average rating" },
     ]
+    
+    const setSortOrder = useGameQueryStore(s => s.setSortOrder);
 
     return (
         <Select
@@ -25,7 +24,7 @@ const SortSelector = ({ onSelectSortOrder }: Props) => {
                     (order) => order.label === event.target.value
                 );
                 console.log(selectedSortOrder === undefined ? '' : selectedSortOrder?.value);
-                onSelectSortOrder(selectedSortOrder === undefined ? '' : selectedSortOrder?.value);
+                setSortOrder(selectedSortOrder === undefined ? '' : selectedSortOrder?.value);
             }}
         >
             {sortOrders.map((order) => (
