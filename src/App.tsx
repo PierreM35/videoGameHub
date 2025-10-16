@@ -53,11 +53,9 @@ function App() {
                 </Box>setGameQuery
                 <Box sx={{ gridArea:'main' }} >
                     <Stack>
-                        <GameHeading gameQuery={gameQuery} />
+                        <GameHeading />
                         <Stack direction='row' gap={2} >
-                            <PlatformsDropdown 
-                                onSelectPlatform={( platform ) => setGameQuery({...gameQuery, platformId: platform?.id}) }
-                                selectedPlatformId={gameQuery.platformId}/>
+                            <PlatformsDropdown />
                             <SortSelector />
                         </Stack>
                         <GameGrid />
