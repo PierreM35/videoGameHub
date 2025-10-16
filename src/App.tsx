@@ -44,8 +44,7 @@ function App() {
             >
                 <Box sx={{ gridArea:'nav' }}  >
                     <NavBar
-                        onModeSwitch={toggleDarkTheme} 
-                        onSearch={(searchedText) => setGameQuery({...gameQuery, searchedText})}/>
+                        onModeSwitch={toggleDarkTheme} />
                 </Box>
                 <Box sx={{ gridArea:'aside' }}  >
                     <GenreList 

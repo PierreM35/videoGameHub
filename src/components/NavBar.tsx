@@ -5,10 +5,9 @@ import SearchInput from "./SearchInput.tsx";
 
 interface Props {
     onModeSwitch: () => void;
-    onSearch: (searchString: string) => void;
 }
 
-function NavBar({onModeSwitch, onSearch}: Props) {
+function NavBar({onModeSwitch}: Props) {
 
     return (
         <Stack
@@ -18,7 +17,7 @@ function NavBar({onModeSwitch, onSearch}: Props) {
             sx={{ p: 1, mt: 0, justifyContent: "space-between" }}
         >
             <img src={logo} />
-            <SearchInput onSearch={onSearch}/>
+            <SearchInput />
             <ColorModeSwitch onModeSwitch={onModeSwitch}/>
         </Stack>
     )
