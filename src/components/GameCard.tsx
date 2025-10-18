@@ -4,14 +4,30 @@ import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
 import getCroppedImageUrl from "../services/image-url";
 import Emoji from "./Emoji";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
     game: Game;
 }
 
 function GameCard({ game }: Props) {
+    const navigate = useNavigate();
+
     return (
-        <Card style={{ backgroundColor: '#263238' }}>
+        <Card 
+            style={{ backgroundColor: '#263238' }}
+            onMouseOver={e => {
+                e.currentTarget.style.transform = 'scale(1.05)';
+                e.currentTarget.style.transition = 'transform 0.3s';
+            }}
+            onMouseOut={e => {
+                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.transition = 'transform 0.3s';
+            }}
+            onClick={() => {
+                navigate('/games/' + game.slug);
+            }}
+        >
             <CardActionArea>
                 <CardMedia
                     sx={{ height: 140}}

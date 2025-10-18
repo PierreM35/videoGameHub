@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom"
 import NavBar from "../components/NavBar"
 import { useState } from "react";
-import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import { Box, createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 
 
 const Layout = () => {
@@ -20,7 +20,9 @@ const Layout = () => {
         <ThemeProvider theme={myTheme}>
             <CssBaseline />
             <NavBar onModeSwitch={toggleDarkTheme }  />
-            <Outlet />
+            <Box sx={{ padding: '2rem' }} >
+                <Outlet />
+            </Box>
         </ThemeProvider>
     )
 }
