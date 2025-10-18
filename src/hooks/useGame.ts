@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import APIClient from "../services/api-client";
-import type { Game } from "./useGames";
+import type { Game } from "../entities/Game";
 
 const apiClient = new APIClient<Game>('/games');
 
-const useGameDetails = (slug: string) => {
+const useGame = (slug: string) => {
     return useQuery<Game, Error>({
         queryKey: ["gameDetails", slug],
         queryFn: () => apiClient.getGame(slug),
@@ -12,4 +12,4 @@ const useGameDetails = (slug: string) => {
     });
 };
 
-export default useGameDetails;
+export default useGame;

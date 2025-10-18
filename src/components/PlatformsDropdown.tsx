@@ -1,5 +1,5 @@
 import { MenuItem, Select } from "@mui/material";
-import usePlatforms, { type Platform } from "../hooks/usePlatforms";
+import usePlatforms from "../hooks/usePlatforms";
 import usePlatform from "../hooks/usePlatform";
 import useGameQueryStore from "../stateManagement/store";
 
