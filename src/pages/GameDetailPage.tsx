@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom"
 import useGame from "../hooks/useGame";
 import { CircularProgress } from "@mui/material";
-import GameDetail from "../components/ExpandableText";
+import ExpandableText from "../components/ExpandableText";
+import GameAttributes from "../components/GameAttributes";
 
 const GameDetailPage = () => {
   var { slug } = useParams<string>();
@@ -16,9 +17,10 @@ const GameDetailPage = () => {
       <h1>
         { game.name }
       </h1>
-      <GameDetail>
+      <ExpandableText>
         {game.description_raw}
-      </GameDetail>
+      </ExpandableText>
+      <GameAttributes game={game} />
     </>
     )
 }   

@@ -11,7 +11,9 @@ const CriticScore = ({ score }: Props) => {
         <Box style={{
             backgroundColor: color, 
             padding: '0px 8px', 
-            borderRadius: 5}}>
+            borderRadius: 5,
+            width: 'fit-content'
+            }}>
             <Typography >
                 {score}
             </Typography>
