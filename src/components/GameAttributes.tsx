@@ -3,7 +3,6 @@ import type { Game } from "../entities/Game";
 import DefintionItem from "./DefintionItem";
 import CriticScore from "./CriticScore";
 
-
 interface Props {
     game: Game;
 }

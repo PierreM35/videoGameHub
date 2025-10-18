@@ -3,6 +3,7 @@ import useGame from "../hooks/useGame";
 import { CircularProgress } from "@mui/material";
 import ExpandableText from "../components/ExpandableText";
 import GameAttributes from "../components/GameAttributes";
+import Trailer from "../components/Trailer";
 
 const GameDetailPage = () => {
   var { slug } = useParams<string>();
@@ -21,6 +22,7 @@ const GameDetailPage = () => {
         {game.description_raw}
       </ExpandableText>
       <GameAttributes game={game} />
+      <Trailer gameId={game.id} />
     </>
     )
 }   
