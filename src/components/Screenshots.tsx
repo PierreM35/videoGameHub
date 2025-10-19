@@ -1,4 +1,4 @@
-import { CircularProgress, Grid, ImageList, ImageListItem, useMediaQuery } from "@mui/material";
+import { CircularProgress, ImageList, ImageListItem, useMediaQuery } from "@mui/material";
 import useScreenshots from "../hooks/useScreenshots";
 import theme from "../theme";
 
@@ -8,15 +8,15 @@ interface Props {
 
 const Screenshots = ({ gameId }: Props) => {
     const { data, error, isLoading } = useScreenshots(gameId);
+    const matchDownMd = useMediaQuery(theme.breakpoints.down('sm'));
     const screenshots = data?.results;
 
     if (!screenshots || screenshots?.length == 0) return null;
 
-    if (isLoading) return <CircularProgress />;
+    if (isLoading) return <CircularProgress/>;
 
     if (error) throw error;
     
-    const matchDownMd = useMediaQuery(theme.breakpoints.down('sm'));
     
     return (
         <ImageList 

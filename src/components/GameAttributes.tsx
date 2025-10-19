@@ -8,9 +8,11 @@ interface Props {
 }
 
 const GameAttributes = ({ game }: Props) => {
+    const gridSize = 6;
+
     return (
         <Grid container spacing={2} marginTop='20px'>
-            <Grid size={6}>
+            <Grid size={gridSize}>
                 <DefintionItem term="Platforms" >
                     { game.parent_platforms.map(({platform}) =>  
                         <Typography key={platform.id}>
@@ -19,12 +21,12 @@ const GameAttributes = ({ game }: Props) => {
                     )}
                 </DefintionItem>
             </Grid>
-            <Grid size={6}>
+            <Grid size={gridSize}>
                 <DefintionItem term="Metascores" >
                     <CriticScore score={game.metacritic} />
                 </DefintionItem>
             </Grid>
-            <Grid size={6}>
+            <Grid size={gridSize}>
                 <DefintionItem term="Genres" >
                     { game.genres.map((genre) =>  
                         <Typography key={genre.id}>
@@ -33,7 +35,7 @@ const GameAttributes = ({ game }: Props) => {
                     )}
                 </DefintionItem>
             </Grid>
-            <Grid size={6}>
+            <Grid size={gridSize}>
                 <DefintionItem term="Publishers" >
                     { game.publishers?.map((publisher) =>  
                         <Typography key={publisher.id}>
